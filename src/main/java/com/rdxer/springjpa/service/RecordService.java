@@ -10,6 +10,10 @@ import java.util.Optional;
 
 public interface RecordService {
     Record show(Long id);
-    Record save(Record model);
+    void destroy(Long id);
+    Record store(Record model);
+    Record update(Long id,Record model);
+    Record updateOfPatch(Long id, Record model);
     List<Record> getAll();
+
 }
