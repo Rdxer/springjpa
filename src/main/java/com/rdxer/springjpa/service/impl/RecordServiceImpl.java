@@ -7,6 +7,7 @@ import com.rdxer.springjpa.service.RecordService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -26,5 +27,10 @@ public class RecordServiceImpl implements RecordService {
 
     public Record save(Record model){
         return recordRepository.saveAndFlush(model);
+    }
+
+    @Override
+    public List<Record> getAll() {
+        return recordRepository.findAll();
     }
 }

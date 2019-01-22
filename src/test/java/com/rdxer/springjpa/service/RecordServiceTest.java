@@ -8,6 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -16,8 +18,6 @@ import static org.junit.Assert.*;
 public class RecordServiceTest {
     @Resource
     RecordService recordService;
-
-    Long id;
 
     @Test
     public void testAdd(){
@@ -36,4 +36,13 @@ public class RecordServiceTest {
         System.out.println(show);
         assertNotNull(show);
     }
+
+    @Test
+    public void testFindAll(){
+        List<Record> show = recordService.getAll();
+        System.out.println(show);
+        assertNotNull(show);
+    }
+
+
 }
