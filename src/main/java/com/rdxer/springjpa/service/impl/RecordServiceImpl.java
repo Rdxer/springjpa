@@ -28,6 +28,11 @@ public class RecordServiceImpl implements RecordService {
     }
 
     public void destroy(Long id) {
+        boolean b = recordRepository.existsById(id);
+        if (b == false){
+            System.out.println("error：404");
+            return ;
+        }
         recordRepository.deleteById(id);
     }
 

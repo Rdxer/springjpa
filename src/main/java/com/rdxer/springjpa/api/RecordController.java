@@ -3,6 +3,7 @@ package com.rdxer.springjpa.api;
 
 import com.rdxer.springjpa.model.Record;
 import com.rdxer.springjpa.service.RecordService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -41,6 +42,7 @@ public class RecordController {
     }
 
     @DeleteMapping ("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void destroy(@PathVariable("id") Long id){
         recordService.destroy(id);
     }
