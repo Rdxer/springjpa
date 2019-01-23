@@ -7,10 +7,12 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/// http://127.0.0.1:8001/swagger-ui.html
 @Configuration
 @EnableSwagger2
 public class Swagger2 {
@@ -27,9 +29,10 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("REST接口定义")
-                .version("1.0")
-                .description("用于测试RESTful API")
+                .title("标题：某公司_用户信息管理系统_接口文档")
+                .description("描述：用于管理集团旗下公司的人员信息,具体包括XXX,XXX模块...")
+                .contact(new Contact("Rdxer","http://rdxer.com","rdxer@foxmail.com"))
+                .version("版本号:1.0")
                 .build();
     }
 }
