@@ -49,6 +49,6 @@ public class Record {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                '}';
+                "}\n";
     }
 }
