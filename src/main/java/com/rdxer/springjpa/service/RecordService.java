@@ -15,5 +15,4 @@ public interface RecordService {
     Record update(Long id,Record model);
     Record updateOfPatch(Long id, Record model);
     List<Record> getAll();
-
 }
