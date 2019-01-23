@@ -25,7 +25,7 @@ public class RecordServiceTest {
         show.setAge(18);
         show.setName("lixiaofeng");
         System.out.println(show);
-        Record saved = recordService.save(show);
+        Record saved = recordService.store(show);
         System.out.println(show);
         assertNotNull(saved.getId());
     }

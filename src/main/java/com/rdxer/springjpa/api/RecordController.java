@@ -27,16 +27,19 @@ public class RecordController {
     }
 
     @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
     public Record store(@RequestBody Record model){
         return recordService.store(model);
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.CREATED)
     public Record update(@PathVariable("id") Long id,@RequestBody Record model){
         return recordService.update(id,model);
     }
 
     @PatchMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.CREATED)
     public Record patchUpdate(@PathVariable("id") Long id,@RequestBody Record model){
         return recordService.updateOfPatch(id,model);
     }
