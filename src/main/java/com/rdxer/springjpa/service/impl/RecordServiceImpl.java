@@ -1,9 +1,11 @@
 package com.rdxer.springjpa.service.impl;
 
+import com.rdxer.springjpa.exception.exceptions.BadRequestException;
+import com.rdxer.springjpa.exception.exceptions.NotAcceptableException;
+import com.rdxer.springjpa.exception.exceptions.NotFoundException;
 import com.rdxer.springjpa.model.Record;
 import com.rdxer.springjpa.repository.RecordRepository;
 import com.rdxer.springjpa.service.RecordService;
-
 import com.rdxer.springjpa.util.Util;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -21,8 +23,7 @@ public class RecordServiceImpl implements RecordService {
     public Record show(Long id){
         Optional<Record> byId = recordRepository.findById(id);
         if (byId.isEmpty()){
-            System.out.println("error：404");
-            return null;
+            throw new NotFoundException();
         }
         return byId.get();
     }
@@ -30,8 +31,7 @@ public class RecordServiceImpl implements RecordService {
     public void destroy(Long id) {
         boolean b = recordRepository.existsById(id);
         if (b == false){
-            System.out.println("error：404");
-            return ;
+            throw new NotFoundException();
         }
         recordRepository.deleteById(id);
     }
@@ -44,17 +44,14 @@ public class RecordServiceImpl implements RecordService {
     @Override
     public Record updateOfPatch(Long id,Record model) {
 
-
         if (model.getId() != null && model.getId() != id) {
             System.out.println("error： 400");
             return null;
         }
 
-
         Optional<Record> r = recordRepository.findById(id);
         if (r.isEmpty()){
-            System.out.println("error： 404");
-            return null;
+            throw new NotFoundException();
         }
 
         model.setId(id);
@@ -68,8 +65,7 @@ public class RecordServiceImpl implements RecordService {
     @Override
     public Record update(Long id,Record model) {
         if (model.getId() != null && model.getId() != id) {
-            System.out.println("error： 400");
-            return null;
+            throw new NotAcceptableException();
         }
         model.setId(id);
         return recordRepository.save(model);
