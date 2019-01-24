@@ -1,12 +1,11 @@
 package com.rdxer.springjpa.service.impl;
 
-import com.rdxer.springjpa.exception.exceptions.BadRequestException;
 import com.rdxer.springjpa.exception.exceptions.NotAcceptableException;
 import com.rdxer.springjpa.exception.exceptions.NotFoundException;
 import com.rdxer.springjpa.model.Record;
 import com.rdxer.springjpa.repository.RecordRepository;
 import com.rdxer.springjpa.service.RecordService;
-import com.rdxer.springjpa.util.Util;
+import com.rdxer.springjpa.core.util.Util;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +49,7 @@ public class RecordServiceImpl implements RecordService {
         }
 
         Optional<Record> r = recordRepository.findById(id);
+
         if (r.isEmpty()){
             throw new NotFoundException();
         }

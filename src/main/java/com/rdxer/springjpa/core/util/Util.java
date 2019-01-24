@@ -1,4 +1,4 @@
-package com.rdxer.springjpa.util;
+package com.rdxer.springjpa.core.util;
 
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;

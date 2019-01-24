@@ -1,4 +1,4 @@
-package com.rdxer.springjpa.util;
+package com.rdxer.springjpa.core.util;
 
 import com.google.common.collect.Sets;
 import org.springframework.context.annotation.Bean;
