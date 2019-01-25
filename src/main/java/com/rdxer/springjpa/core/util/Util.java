@@ -7,6 +7,11 @@ import java.beans.FeatureDescriptor;
 import java.util.stream.Stream;
 
 public class Util {
+    /**
+     * 获取空 属性名
+     * @param source
+     * @return
+     */
     public static String[] getNullPropertyNames(Object source) {
         final BeanWrapper wrappedSource = new BeanWrapperImpl(source);
         return Stream.of(wrappedSource.getPropertyDescriptors())
