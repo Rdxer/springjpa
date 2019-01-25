@@ -38,13 +38,13 @@ public class JWTLoginFilter
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
-            Account user = new ObjectMapper()
-                    .readValue(req.getInputStream(), Account.class);
+            LoginPara para = new ObjectMapper()
+                    .readValue(req.getInputStream(), LoginPara.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            user.getUsername(),
-                            user.getPassword(),
+                            para.username,
+                            para.password,
                             new ArrayList<>())
             );
         } catch (IOException e) {
@@ -67,4 +67,9 @@ public class JWTLoginFilter
                 .compact();
         res.addHeader("Authorization", "Bearer " + token);
     }
+}
+
+class LoginPara{
+    String username;
+    String password;
 }

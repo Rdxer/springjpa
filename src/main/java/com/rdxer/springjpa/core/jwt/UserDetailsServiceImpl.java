@@ -22,6 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Resource
     private AccountRepository repository;
 
+    /// 用于 登陆 查询用户
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Account> byUsername = repository.findByUsername(username);

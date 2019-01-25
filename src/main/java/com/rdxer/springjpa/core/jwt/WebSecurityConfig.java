@@ -1,5 +1,6 @@
 package com.rdxer.springjpa.core.jwt;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -12,12 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * SpringSecurity的配置
- * 通过SpringSecurity的配置，将JWTLoginFilter，JWTAuthenticationFilter组合在一起
+ * 通过SpringSecurity的配置，将JWTLoginFilter，JWTAuthenticationFilter 组合在一起
  *
  * @author zhaoxinguo on 2017/9/13.
  */
 @Configuration
-//@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 @Order(SecurityProperties.IGNORED_ORDER)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public WebSecurityConfig(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public WebSecurityConfig(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
