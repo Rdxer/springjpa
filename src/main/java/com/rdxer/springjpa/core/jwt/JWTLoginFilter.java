@@ -58,14 +58,24 @@ public class JWTLoginFilter
                                             HttpServletResponse res,
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
+        long time = JWTConfiguration.sessionTime;
 
         String token = Jwts.builder()
                 .setSubject(((User) auth.getPrincipal()).getUsername())
 //                .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 24 * 1000))
-                .setExpiration(new Date(System.currentTimeMillis() + JWTConfiguration.sessionTime))
+                .setExpiration(new Date(System.currentTimeMillis() + time))
                 .signWith(SignatureAlgorithm.HS512, JWTConfiguration.secret)
                 .compact();
+
         res.addHeader("Authorization", "Bearer " + token);
+        
+//        String refreshToken = Jwts.builder()
+//                .setSubject(((User) auth.getPrincipal()).getUsername())
+//                .setExpiration(new Date(System.currentTimeMillis() + time * 2))
+//                .signWith(SignatureAlgorithm.HS512, JWTConfiguration.secret)
+//                .compact();
+//
+//        res.addHeader("RefreshToken", "Bearer " + token);
     }
 }
 
